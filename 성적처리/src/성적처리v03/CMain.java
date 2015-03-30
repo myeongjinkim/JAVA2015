@@ -15,6 +15,7 @@ import entity.CMember;
 
 public class CMain {
 	public static void main(String[] arg){
+		// login
 		CLoginView loginview = new CLoginView();
 		CMember[] member = loginview.login();
 		CLoginControl logincontrol =new CLoginControl();
