@@ -7,17 +7,21 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class DAO{
+import entity.CEntity;
+
+             
+public class ObjectDAO implements IDAO{
 	
-	public Object read(String string) 
+	public Object read(CEntity entity, String filename)
 	{
+		@SuppressWarnings("unused")
 		Object object =null;
 		ObjectInputStream in;
 		try {
-			in = new ObjectInputStream(new FileInputStream(string));
+			in = new ObjectInputStream(new FileInputStream(filename));
 			object= in.readObject();
 			in.close();
-			return object;
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -29,6 +33,7 @@ public class DAO{
 	}
 	public void write(Object object, String filename)
 	{
+		//CEntity entity =new CGangJwa();
 		if(object!=null)
 		{
 			File file= new File(filename);		
