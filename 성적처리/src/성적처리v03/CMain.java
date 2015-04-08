@@ -5,19 +5,23 @@ import view.CLoginView;
 import DAO.IDAO;
 import DAO.TextDAO;
 import control.CLoginControl;
-import entity.CMember;
 
 public class CMain {
 	public static void main(String[] arg){
 		// login
-		CLoginView loginview = new CLoginView();
-		CMember member = loginview.login();
-		CLoginControl logincontrol =new CLoginControl();
-		member = logincontrol.login(member);
-		IDAO memberDAO= new TextDAO();
-		//CMember members = new CMember();
-		member= (CMember) memberDAO.read(member,"member.txt");//type casting
-		//memberDAO.write(member,"memberOut.txt");
+		
+		//create object
+		CLoginView loginView = new CLoginView();	
+		CLoginControl loginControl = new CLoginControl();
+		IDAO dao = new TextDAO();
 	
+		//associates
+		loginView.setControl(loginControl);
+		loginControl.setDao(dao);
+		
+			
+		//start login
+		loginView.login();
+
 	}
 }
